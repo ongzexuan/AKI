@@ -1,0 +1,135 @@
+<html>
+<head>
+	<title>ORCS</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="js/jquery-3.0.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-toggle.min.js"></script>
+
+	<script>
+
+		var factors = ["#factor1", "#factor2", "#factor3", "#factor4", "#factor5", "#factor6", "#factor7", "#factor8", ];
+
+		window.onload = function() {
+			for (var i = 0; i < factors.length; i++) {
+				$(function() {
+					$(factors[i]).change(function() {
+						countScore();
+					});
+				});				
+			}
+		}
+		function c(id) {
+			if($(id).prop('checked')) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+
+		function countScore() {
+			var score = 0;
+			score = c("#factor1")*2+c("#factor2")*1+c("#factor3")*2+c("#factor4")*2+c("#factor5")*1+c("#factor6")*2+c("#factor7")*2+c("#factor8")*1;
+			updateScore(score);
+		}
+
+		function updateScore(score) {
+			document.getElementById("scoretext").innerHTML = "Your score is ".concat(score.toString());
+		}
+
+
+	</script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1 class="text-center">Post-CABG Risk Scoring</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="text-center">
+			  <ul class="pagination">
+			    <li><a href="#">AKI</a></li>
+			    <li><a href="#">AF</a></li>
+			  </ul>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h2 class="text-center">Pre-operative Factors</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-offset-3">
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>1. Age</h3>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor1"></p>
+
+				</div>
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>2. Hypertension</h3>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor2"></p>
+				</div>
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col-md-offset-3">
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>3. Anaemia</h3>
+					<h5>Hb less than 12.5mg/dl</h5>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor3"></p>
+				</div>
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>4. eGFR less than 60ml/min</h3>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor4"></p>
+				</div>
+			</div>		
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h2 class="text-center">Intra-operative Factors</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-offset-3">
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>5. Red Blood Cell Transfusion</h3>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor5"></p>
+				</div>
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>6. Use of Intra-Aortic Balloon Pump</h3>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor6"></p>
+				</div>
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col-md-offset-3">
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>7. Cardiopulmonary bypass usage duration more than or equal to 120min</h3>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor7"></p>
+				</div>
+				<div class="col-md-4 text-center panel panel-default">
+					<p><h3>8. Lowest haematocrit during cardiopulmonary bypass less than 22%</h3>
+					<input type="checkbox" data-toggle="toggle" data-size="large" data-on="Yes" data-off="No" data-onstyle="success" data-offstyle="danger" id="factor8"></p>
+				</div>
+			</div>		
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h2 class="text-center" id="scoretext">Your score is 0</h1>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
